@@ -8,11 +8,11 @@ if [[ "help" == "${branch}" ]]; then
   echo "usage:"
   echo "===="
   echo ""
-  echo "new-mob-session <branch name>"
+  echo "start-mob-session <branch name>"
   exit 1
 fi
 
-readonly base
+declare base
 if [[ "" == "${BASE_BRANCH}" ]]; then
   base="develop"
 else

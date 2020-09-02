@@ -12,14 +12,10 @@ if [[ "help" == "${branch}" ]]; then
   exit 1
 fi
 
-declare base
-if [[ "" == "${BASE_BRANCH}" ]]; then
-  base="develop"
-else
-  base="${BASE_BRANCH}"
-fi
-
 git fetch --prune
+
+readonly base="$(git branch --all | grep origin | grep -v HEAD | cut -d'/' -f3- | peco)"
+
 git checkout -b "${branch}" origin/"${base}"
 
 git commit --allow-empty -m "initial commit for ${branch}"

@@ -17,7 +17,7 @@ git fetch --prune
 readonly key="$(git branch --all | grep remote | grep -v HEAD | cut -d'/' -f3- | peco)"
 readonly base="$(git branch --all | grep remote  | grep "${key}" | sed -e 's/ //g' -e 's/remotes\///g')"
 
-git checkout -b "${branch}" origin/"${base}"
+git checkout -b "${branch}" "${base}"
 
 git commit --allow-empty -m "initial commit for ${branch}"
 gh pr create --base "${base}" --title "[WIP] ${branch}" --body "" --draft

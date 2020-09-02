@@ -14,7 +14,8 @@ fi
 
 git fetch --prune
 
-readonly base="$(git branch --all | grep origin | grep -v HEAD | cut -d'/' -f3- | peco)"
+readonly key="$(git branch --all | grep remote | grep -v HEAD | cut -d'/' -f3- | peco)"
+readonly base="$(git branch --all | grep remote  | grep "${key}" | sed -e 's/ //g' -e 's/remotes\///g')"
 
 git checkout -b "${branch}" origin/"${base}"
 

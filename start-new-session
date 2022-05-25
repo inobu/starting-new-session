@@ -14,7 +14,7 @@ fi
 
 git fetch --prune
 
-readonly key="$(git branch --all | grep remote | grep -v HEAD | cut -d'/' -f3- | peco)"
+readonly key="$(git branch --all | grep remote | grep -v HEAD | peco)"
 readonly remote="$(git branch --all | grep remote | grep -v HEAD | grep "${key}" | sed -e 's/ //g' -e 's/remotes\///g')"
 readonly base="$(echo "${remote}" | cut -d'/' -f2-)"
 

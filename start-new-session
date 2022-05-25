@@ -21,5 +21,4 @@ readonly base="$(echo "${remote}" | cut -d'/' -f2-)"
 git checkout -b "${branch}" "${remote}"
 
 git commit --allow-empty -m "initial commit for ${branch}"
-gh pr create --base "${base}" --title "[WIP] ${branch}" --body "" --draft
-
+gh pr create --base "${base}" --title "[WIP] ${branch}" --body "" --draft --assignee @me
